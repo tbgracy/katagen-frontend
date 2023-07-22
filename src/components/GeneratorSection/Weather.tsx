@@ -25,6 +25,6 @@ export default function Weather() {
 
     return <article id="weather">
         long: {lat} lat : {long}
-        {data}
+        {JSON.stringify(data)}
     </article>
 }
