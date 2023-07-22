@@ -14,7 +14,7 @@ function Result({ outfit }: { outfit: Outfit }) {
     return <section id="result">
         <h3>Result</h3>
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis nihil assumenda impedit voluptatem inventore, quia quae ducimus temporibus molestiae illo. Temporibus possimus minus qui dolore porro tenetur laboriosam consequuntur corrupti!
+            {JSON.stringify(outfit)}
         </p>
         <Button label={'Generate another outfit'} handleClick={() => { }} />
     </section>
