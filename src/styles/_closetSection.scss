@@ -1,8 +1,19 @@
+@keyframes shake {
+    from {
+        transform: rotate(2deg);
+    }
+
+    to {
+        transform: rotate(-2deg);
+    }
+}
+
 #closet {
     border: 2px solid black;
     box-sizing: border-box;
     height: 100%;
     position: relative;
+    border-radius: $border-radius*2 $border-radius/2 $border-radius/2 $border-radius*2;
 
     &>button {
         position: absolute;
@@ -18,12 +29,33 @@
         overflow-y: scroll;
         padding: 2rem;
 
+        &::-webkit-scrollbar {
+            width: .5rem;
+            height: .5rem;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: $gray;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $white;
+            border: 2px solid $accent-color;
+            border-radius: 20px;
+        }
+
         .clothing-card {
             width: 200px;
             position: relative;
             margin: 1rem auto;
             text-align: initial;
             border: 1px solid black;
+            @include border-radius;
+            overflow: hidden;
+
+            &:hover {
+                animation: shake .3s ease-in-out;
+            }
 
             button {
                 display: block;
@@ -49,8 +81,13 @@
                 width: 20px;
                 height: 20px;
                 display: inline-block;
-                border-radius: 50%;
+                border-radius: 5px;
+                border: 1px solid $black;
                 margin: .1rem;
+
+                &:hover {
+                    transform: scale(1.2);
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { SyntheticEvent, useEffect, useRef } from "react"
 import Button from "./Button"
 import { FaTimes } from "react-icons/fa"
 import { baseUrl } from "../services/constants";
@@ -10,11 +10,15 @@ export default function NewClothingForm({ setDialogBox }: { setDialogBox: (dialo
         setDialogBox(dialogElement.current!);
     });
 
+    function handleImagePreview(e: SyntheticEvent) {
+    }
+
     return <dialog ref={dialogElement} id="new-clothing">
         <form action={`${baseUrl}/clothes`} method="POST">
+            <h2>Nouvelle pièce</h2>
+            <img src="" alt="" />
             <label htmlFor="image">Photo</label>
-            <input type="file" name="image" id="image" accept="image/*" />
-
+            <input type="file" name="image" id="image" accept="image/*" onChange={handleImagePreview} />
             <label htmlFor="type">Type</label>
             <select name="type" id="type">
                 <option value="sport">Sport</option>

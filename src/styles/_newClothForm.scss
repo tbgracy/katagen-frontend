@@ -8,8 +8,18 @@ dialog#new-clothing {
     border-radius: $border-radius;
     padding: 2rem;
 
+    &>button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
     form {
         display: flex;
         flex-direction: column;
+    }
+
+    h2 {
+        margin-bottom: 2rem;
     }
 }

@@ -2,8 +2,9 @@ import { Clothing } from "../../types/clothing";
 import Button from "../Button";
 import { FaPlus } from "react-icons/fa";
 import ClothList from "./ClothList";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NewClothingForm from "../NewClothingForm";
+import ClotheServices from "../../services/clothesService";
 
 const clothes: Array<Clothing> = [
     {
@@ -19,7 +20,7 @@ const clothes: Array<Clothing> = [
         image: 'https://placehold.co/600x400/png',
         type: 'sport',
         category: 'haut',
-        hot: false,
+        hot: true,
         colors: ['blue', 'teal', 'yellow'],
     },
     {
@@ -48,6 +49,13 @@ export default function ClosetSection() {
             dialogBox.open ? dialogBox.close() : dialogBox.showModal();
         }
     }
+
+    // const [clothes, setClothes] = useState<Array<Clothing>>([]);
+
+    // useEffect(() => {
+    //     const result = ClotheServices.getAllClothes();
+    //     result.then((value) => { setClothes(value) });
+    // }, []);
 
     return <section id='closet'>
         <h2>Closet</h2>

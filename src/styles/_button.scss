@@ -1,13 +1,39 @@
+@keyframes colorChange {
+    0% {
+        background: black;
+    }
+
+    25% {
+        background: linear-gradient(to right, 20% white, black);
+    }
+
+    50% {
+        background: linear-gradient(to right, 40% white, black);
+    }
+
+    75% {
+        background: linear-gradient(to right, 60% white, black);
+    }
+
+    100% {
+        background: white;
+    }
+}
+
 button {
     background-color: $black;
     padding: 10px;
     color: $white;
     border: 2px solid transparent;
     cursor: pointer;
+    @include border-radius;
+    transition: all .3s;
 
     &:hover {
+        // animation: colorChange 1s linear;
         background-color: $white;
         color: $black;
         border: 2px solid $black;
+        transition: all .3s;
     }
 }

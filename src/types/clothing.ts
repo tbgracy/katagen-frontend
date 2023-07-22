@@ -1,8 +1,8 @@
 export type Clothing = {
     id: number,
     image: string,
-    type: string,
-    category: string,
+    type: 'sport' | 'plage' | 'casual' | 'formel',
+    category: 'haut' | 'bas' | 'accessory' | 'shoe',
     hot: boolean,
     colors: Array<string>,
     user_id?: number,
