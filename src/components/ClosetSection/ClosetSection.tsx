@@ -1,7 +1,9 @@
 import { Clothing } from "../../types/clothing";
 import Button from "../Button";
 import { FaPlus } from "react-icons/fa";
-import ClothList from "./ClothList"; 
+import ClothList from "./ClothList";
+import { useState } from "react";
+import NewClothingForm from "../NewClothingForm";
 
 const clothes: Array<Clothing> = [
     {
@@ -39,10 +41,18 @@ const clothes: Array<Clothing> = [
 ];
 
 export default function ClosetSection() {
+    const [dialogBox, setDialogBox] = useState<HTMLDialogElement | undefined>(undefined);
+
+    function toggleNewClothingForm() {
+        if (dialogBox != undefined) {
+            dialogBox.open ? dialogBox.close() : dialogBox.showModal();
+        }
+    }
 
     return <section id='closet'>
         <h2>Closet</h2>
-        <ClothList clothes={clothes}/>
-        <Button label={<FaPlus />} />
+        <ClothList clothes={clothes} />
+        <Button label={<FaPlus />} handleClick={toggleNewClothingForm} />
+        <NewClothingForm setDialogBox={(dia) => setDialogBox(dia)} />
     </section>
 }

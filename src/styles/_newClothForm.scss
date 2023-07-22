@@ -1,0 +1,15 @@
+dialog#new-clothing {
+    margin: auto;
+
+    &::backdrop {
+        backdrop-filter: blur(5px);
+    }
+
+    border-radius: $border-radius;
+    padding: 2rem;
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+}

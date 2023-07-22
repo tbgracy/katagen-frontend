@@ -3,26 +3,28 @@ import { useEffect, useState } from "react"
 export default function Weather() {
     const [lat, setLat] = useState<number>();
     const [long, setLong] = useState<number>();
-    const [data, setData] = useState([]);
+    const [data, setData] = useState();
 
     useEffect(() => {
-        const fetchPosition = async () => {
+        const fetchData = async () => {
             navigator.geolocation.getCurrentPosition(function (position) {
                 setLat(position.coords.latitude);
                 setLong(position.coords.longitude);
             });
 
-            await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=hourly,daily&appid=9c9b0b0b0b0b0b0b0b0b0b0b0b0b0b0b`)
+            // console.log(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,rain&forecast_days=1`);
+            fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,rain&forecast_days=1`)
                 .then(res => res.json())
                 .then(result => {
-                    setData(result);
+                    // setData(result);
                     console.log(result);
                 });
         }
-        fetchPosition();
+        fetchData();
     }, [lat, long]);
 
     return <article id="weather">
         long: {lat} lat : {long}
+        {data}
     </article>
 }

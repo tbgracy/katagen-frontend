@@ -1,0 +1,1 @@
+export const baseUrl = 'https://nomeniavojoe.pythonanywhere.com/api/v1'

@@ -21,10 +21,17 @@ h2 {
 }
 
 main {
-    height: 100vh;
+    height: 80vh;
     display: flex;
+
+    section {
+        border-radius: $border-radius;
+    }
 }
 
 @import 'closetSection';
 @import 'generatorSection';
 @import 'button';
+@import 'navbar';
+@import 'newClothForm';
+@import 'form';
