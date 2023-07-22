@@ -7,7 +7,8 @@ Backend base url :
 ## Description
 
 ## Roadmap 
-- [ ] Add closet
+- [x] Add closet
 - [ ] Add Add weather
 - [ ] Add generator
 - [ ] Add authentication
+- [ ] Add IA
