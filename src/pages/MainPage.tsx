@@ -1,7 +1,7 @@
 import Generator from "../components/GeneratorSection"
 import Closet from "../components/ClosetSection"
 import Navbar from "../components/Navbar"
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import UserService from "../services/userServices";
 import { LoginContext } from "../components/context";
 
@@ -11,6 +11,12 @@ export default function MainPage() {
     const contextValue = useMemo(
         () => ({ isLoggedIn, toggleLogin }), [isLoggedIn]
     );
+
+    useEffect(() => { 
+        if (!isLoggedIn){
+            window.location.href = '/login';
+        }
+    }, []);
 
     return <>
         <LoginContext.Provider value={contextValue}>

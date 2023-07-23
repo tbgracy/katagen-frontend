@@ -16,6 +16,7 @@ export default function Navbar() {
 
     function logout() {
         UserService.logout();
+        document.location.href = '/login';
         toggleLogin();
     }
 
