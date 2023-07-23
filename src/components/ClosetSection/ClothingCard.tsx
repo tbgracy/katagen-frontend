@@ -5,7 +5,7 @@ import ClotheServices from "../../services/clothesService";
 
 import { FaTrash } from "react-icons/fa";
 import { FaTshirt, FaHatCowboy, FaShoePrints } from "react-icons/fa";
-import { FaSnowflake, FaSun } from "react-icons/fa";
+import { FaSnowflake, FaSun, FaRunning, FaWater, FaGlassMartini, FaGlasses } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { ClotheContext } from "../context";
 import { ClipLoader } from "react-spinners";
@@ -15,13 +15,14 @@ export default function ClothingCard({ clothing }: { clothing: Clothing }) {
     const [isDeleting, setIsDeleting] = useState(false);
 
     clothes;
+    console.log(clothing.image);
 
-    // const typeIcons = {
-    //     'sport': null,
-    //     'plage': null,
-    //     'casual': null,
-    //     'formel': null,
-    // };
+    const typeIcons = {
+        'sport': <FaRunning />,
+        'plage': <FaWater />,
+        'casual': <FaGlassMartini />,
+        'formel': <FaGlasses />,
+    };
 
     const categoryIcons = {
         'haut': <FaTshirt />,
@@ -47,7 +48,16 @@ export default function ClothingCard({ clothing }: { clothing: Clothing }) {
         <img src={clothing.image} alt="" />
         <Colors data={[clothing.hexcode!]} />
         <Button label={deleteButtonContent} handleClick={handleDelete} />
-        {categoryIcons[clothing.category]}
-        {clothing.hot ? <FaSun /> : <FaSnowflake />}
+        <ul className="icons">
+            <li className="category">
+                {categoryIcons[clothing.category]}
+            </li>
+            <li className="type">
+                {typeIcons[clothing.type]}
+            </li>
+            <li className="weather">
+                {clothing.hot ? <FaSun /> : <FaSnowflake />}
+            </li>
+        </ul>
     </article>
 }

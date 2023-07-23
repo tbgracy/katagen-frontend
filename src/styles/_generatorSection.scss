@@ -9,7 +9,7 @@
     .result-list {
         display: grid;
         grid-template-areas: 'haut accessory'
-                             'bas shoe';
+            'bas shoe';
         padding: 1rem;
         box-sizing: border-box;
     }
@@ -38,6 +38,23 @@
         @include border-radius;
         overflow: hidden;
 
+        .icons {
+            position: relative;
+            left: 0;
+            bottom: 0;
+
+            li {
+                display: inline-block;
+                margin: .5rem;
+                cursor: pointer;
+                transition: transform .2s ease-in-out;
+
+                &:hover {
+                    transform: scale(1.2);
+                }
+            }
+        }
+
         button {
             display: block;
             margin: 1rem;
@@ -51,11 +68,7 @@
         }
 
         .color-container {
-            position: absolute;
-            display: flex;
-            list-style: none;
-            right: .5rem;
-            top: .5rem;
+            display: none;
         }
 
         button {

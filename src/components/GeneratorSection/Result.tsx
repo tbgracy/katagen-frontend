@@ -1,24 +1,41 @@
+import { Clothing } from "../../types/clothing";
 import { Outfit } from "../../types/outfit"
 import Button from "../Button"
 import ClothingCard from "../ClosetSection/ClothingCard";
 
 export default function Result({ outfit }: { outfit: Outfit }) {
+    const cls: Array<Clothing> = [];
+    if (outfit.accessory) cls.push(outfit.accessory);
+    if (outfit.haut) cls.push(outfit.haut);
+    if (outfit.bas) cls.push(outfit.bas);
+    if (outfit.shoe) cls.push(outfit.shoe);
+    const clsElement: Array<JSX.Element> = [];
+
+    const ids = {
+        'accessory': 'accessory',
+        'haut': 'haut',
+        'bas': 'bas',
+        'shoe': 'shoe',
+    }
+
+    for (let ankanjo of cls) {
+        if (typeof (ankanjo) !== typeof ("")) {
+            if (!ankanjo.image.startsWith('https://nomeniavojoe.pythonanywhere.com/')){
+                ankanjo.image = 'https://nomeniavojoe.pythonanywhere.com/' + ankanjo.image;
+            }
+            clsElement.push(
+                <div id={ids[ankanjo.category]}>
+                    <ClothingCard key={ankanjo.id} clothing={ankanjo} />
+                </div>
+            );
+        }
+    }
 
     return <section id="generation-result">
         <div className="result-list">
-            <div id="accessory">
-                <ClothingCard key={outfit.accessory.id} clothing={outfit.accessory} />
-            </div>
-            <div id="haut">
-                <ClothingCard key={outfit.haut.id} clothing={outfit.haut} />
-            </div>
-            <div id="bas">
-                <ClothingCard key={outfit.bas.id} clothing={outfit.bas} />
-            </div>
-            <div id="shoe">
-                <ClothingCard key={outfit.shoe.id} clothing={outfit.accessory} />
-            </div>
+            {clsElement}
+
         </div>
-        <Button label={'Generate another outfit'} handleClick={() => { window.location.reload() }} />
+        <Button label={'Générer une autre tenue'} handleClick={() => { window.location.reload() }} />
     </section>
 }

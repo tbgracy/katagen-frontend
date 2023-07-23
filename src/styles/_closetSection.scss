@@ -59,6 +59,23 @@
             @include border-radius;
             overflow: hidden;
 
+            .icons {
+                position: absolute;
+                left: 0;
+                bottom: 1rem;
+
+                li {
+                    display: inline-block;
+                    margin: .5rem;
+                    cursor: pointer;
+                    transition: transform .2s ease-in-out;
+
+                    &:hover {
+                        transform: scale(1.2);
+                    }  
+                }
+            }
+
             button {
                 display: block;
                 margin: 1rem;

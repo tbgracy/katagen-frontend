@@ -34,6 +34,6 @@ export default function GenerationForm(
                 <option value="formel">Formel</option>
             </select>
         </div>
-        <Button label={'Generate outfit'} />
+        <Button label={'Generer tenu'} />
     </form>
 }
