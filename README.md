@@ -12,7 +12,7 @@ Demo credentials :
 
 ## Roadmap 
 - [x] Add closet
-- [x] Add Add weather
+- [ ] Add Add weather
 - [x] Add generator
 - [x] Add authentication
 - [ ] Add AI

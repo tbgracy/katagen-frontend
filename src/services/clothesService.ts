@@ -67,7 +67,6 @@ export default class ClotheServices {
     }
 
     static async generate(
-        temparture: number,
         type: 'sport' | 'plage' | 'casual' | 'formel',
         useTemp: boolean,
     ): Promise<Outfit | undefined> {
@@ -76,7 +75,6 @@ export default class ClotheServices {
         useTemp;
 
         const body = {
-            temparture: temparture,
             type: type,
         }
 
