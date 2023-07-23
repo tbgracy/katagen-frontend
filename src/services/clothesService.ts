@@ -90,7 +90,13 @@ export default class ClotheServices {
                 body: JSON.stringify(body),
             })
             const jsonResponse = await response.json();
-            return jsonResponse.outfit;
+            const result = jsonResponse.outfit as Outfit;
+            
+            if (result.haut !== "") result.haut.image = `${baseUrl.replace('api/v1', '')}${result.haut.image}`;
+            if (result.bas !== "") result.bas.image = `${baseUrl.replace('api/v1', '')}${result.bas.image}`;
+            if (result.shoe !== "") result.shoe.image = `${baseUrl.replace('api/v1', '')}${result.shoe.image}`;
+            if (result.accessory !== "") result.accessory.image = `${baseUrl.replace('api/v1', '')}${result.accessory.image}`;
+            return result;
 
         } catch (e) {
             console.log(e);
