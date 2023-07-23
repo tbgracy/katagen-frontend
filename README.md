@@ -1,15 +1,14 @@
 # 👕 👖 👟 Katagen - frontend
 
-Prod url : [](https://katagen.netlify.app/)
-Backend repository : [](j03-dev/wcc-final-back)
-Backend base url : [](https://nomeniavojoe.pythonanywhere.com/api/v1/)
+Prod url : [https://katagen.netlify.app/](https://katagen.netlify.app/)
+Backend repository : [j03-dev/wcc-final-back](j03-dev/wcc-final-back)
 
 ## Description
 
 ## Roadmap 
 - [x] Add closet
-- [ ] Add Add weather
-- [ ] Add generator
-- [ ] Add authentication
+- [x] Add Add weather
+- [x] Add generator
+- [x] Add authentication
 - [ ] Add AI
 - [ ] Make it mobile friendly
