@@ -4,7 +4,7 @@ import Colors from "./Colors";
 import ClotheServices from "../../services/clothesService";
 
 import { FaTrash } from "react-icons/fa";
-import { FaTshirt, FaHatCowboy, FaShoePrints } from "react-icons/fa";
+import { FaTshirt } from "react-icons/fa";
 import { FaSnowflake, FaSun, FaRunning, FaWater, FaGlassMartini, FaGlasses } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { ClotheContext } from "../context";
