@@ -14,7 +14,7 @@ export default function ClothingCard({ clothing }: { clothing: Clothing }) {
     const { clothes, refreshClothingList } = useContext(ClotheContext);
     const [isDeleting, setIsDeleting] = useState(false);
 
-    console.log(clothes);
+    clothes;
 
     // const typeIcons = {
     //     'sport': null,
@@ -41,7 +41,7 @@ export default function ClothingCard({ clothing }: { clothing: Clothing }) {
         }
     }
 
-    const deleteButtonContent = isDeleting ? <ClipLoader /> : <FaTrash />;
+    const deleteButtonContent = isDeleting ? <ClipLoader color="white" /> : <FaTrash />;
 
     return <article className="clothing-card">
         <img src={clothing.image} alt="" />

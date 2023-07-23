@@ -32,7 +32,7 @@ export default function ClosetSection() {
             setIsLoading(false);
             setClothes(value);
         });
-        console.log(clothes);
+        clothes;
 
     }
 

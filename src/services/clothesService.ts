@@ -1,4 +1,5 @@
 import { Clothing } from "../types/clothing";
+import { Outfit } from "../types/outfit";
 import { baseUrl } from "./constants";
 
 export default class ClotheServices {
@@ -58,10 +59,42 @@ export default class ClotheServices {
                 }
             })
             return response.ok;
-            
+
         } catch (e) {
             console.log(e);
             return false;
+        }
+    }
+
+    static async generate(
+        temparture: number,
+        type: 'sport' | 'plage' | 'casual' | 'formel',
+        useTemp: boolean,
+    ): Promise<Outfit | undefined> {
+
+        const token = localStorage.token;
+        useTemp;
+
+        const body = {
+            temparture: temparture,
+            type: type,
+        }
+
+        try {
+            const response = await fetch(`${baseUrl}/generate`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Token ${token}`,
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify(body),
+            })
+            const jsonResponse = await response.json();
+            return jsonResponse.outfit;
+
+        } catch (e) {
+            console.log(e);
+            throw e;
         }
     }
 }

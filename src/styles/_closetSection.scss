@@ -45,8 +45,7 @@
         }
         
         &::-webkit-scrollbar-thumb {
-            background-color: $white;
-            border: 2px solid $accent-color;
+            background-color: $black;
             border-radius: 20px;
         }
 
@@ -55,13 +54,10 @@
             position: relative;
             margin: 1rem auto;
             text-align: initial;
-            border: 1px solid black;
+            // border: 1px solid black;
+            background-color: $white;
             @include border-radius;
             overflow: hidden;
-
-            &:hover {
-                animation: shake .3s ease-in-out;
-            }
 
             button {
                 display: block;

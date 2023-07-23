@@ -25,16 +25,18 @@ dialog#new-clothing {
             align-items: center;
             width: 100%;
             justify-content: space-between;
+
             label {
-                text-align: right
+                text-align: right;
             }
         }
 
-        input {
+        input, select {
             @include border-radius;
             padding: .5rem;
             border: none;
             background-color: $gray;
+            width: 60%;
         }
     }
 

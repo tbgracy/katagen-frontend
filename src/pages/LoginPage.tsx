@@ -22,7 +22,6 @@ export default function LoginPage() {
         result.then((value) => {
             setIsLoading(false);
             if (value) {
-                alert('Connecté');
                 window.location.href = '/';
             } else {
                 alert('Connexion échoué,veuillez vérifier votre connexion internet ou vos identifiants.');

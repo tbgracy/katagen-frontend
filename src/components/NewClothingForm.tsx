@@ -68,7 +68,7 @@ export default function NewClothingForm({ setDialogBox }: { setDialogBox: (dialo
                 <label htmlFor="weather-cold">Cold</label>
                 <input type="radio" name="weather" id="weather-cold" value="cold" />
             </div>
-            <div>
+        <div>
                 <label htmlFor="colors">Colors</label>
                 {/* <input type="text" name="hexcode" id="colors" /> */}
                 <input type="color" name="hexcode" id="colors" />

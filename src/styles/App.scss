@@ -21,15 +21,19 @@ h2 {
     font-weight: normal;
     font-size: 1.6rem;
     text-align: center;
+    margin-top: 1rem;
 }
 
 main {
     height: 80vh;
     display: flex;
     padding: 1rem;
+    justify-content: center;
 
     section {
         // border-radius: $border-radius;
+        border: none !important;
+        background-color: $gray;
     }
 }
 
