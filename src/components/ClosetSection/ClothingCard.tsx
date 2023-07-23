@@ -26,9 +26,9 @@ export default function ClothingCard({ clothing }: { clothing: Clothing }) {
 
     const categoryIcons = {
         'haut': <FaTshirt />,
-        'bas': <FaHatCowboy />,
-        'shoe': <FaShoePrints />,
-        'accessory': <FaHatCowboy />,
+        'bas': '👖',
+        'shoe': '👞',
+        'accessory': '📿',
     };
 
     async function handleDelete() {
@@ -49,10 +49,10 @@ export default function ClothingCard({ clothing }: { clothing: Clothing }) {
         <Colors data={[clothing.hexcode!]} />
         <Button label={deleteButtonContent} handleClick={handleDelete} />
         <ul className="icons">
-            <li className="category">
+            <li className="category" title={clothing.category}>
                 {categoryIcons[clothing.category]}
             </li>
-            <li className="type">
+            <li className="type" title={clothing.type}>
                 {typeIcons[clothing.type]}
             </li>
             <li className="weather">
