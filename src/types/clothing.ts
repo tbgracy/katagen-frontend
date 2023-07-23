@@ -5,5 +5,6 @@ export type Clothing = {
     category: 'haut' | 'bas' | 'accessory' | 'shoe',
     hot: boolean,
     colors: Array<string>,
+    hexcode?: string,
     user_id?: number,
 }

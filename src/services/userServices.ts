@@ -8,6 +8,14 @@ export default class UserService {
             url += '/login';
         }
 
+        const body = {
+            username: username,
+            password: password,
+        };
+        
+        console.log(url);
+        console.log(body);
+
         try {
             const response = await fetch(url, {
                 method: 'POST',
@@ -15,7 +23,7 @@ export default class UserService {
                     "Content-Type": "application/json",
                 },
                 mode: 'cors',
-                body: JSON.stringify({ username: username, password: password }),
+                body: JSON.stringify(body),
             });
 
             console.log(`RESPONSE STATUE : ${response.status}`);
@@ -27,7 +35,6 @@ export default class UserService {
                 if (action == "login") {
                     localStorage.setItem('token', responseBody.token);
                     console.log(localStorage.token);
-
                 }
                 return true;
             }

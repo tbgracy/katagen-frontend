@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import UserService from "../../services/userServices";
 import Button from "../Button";
+import { LoginContext } from "../context";
 
 export default function Navbar() {
+    const { isLoggedIn, toggleLogin } = useContext(LoginContext);
+
     function goToLoginPage() {
         document.location.href = '/login';
     }
@@ -12,11 +16,12 @@ export default function Navbar() {
 
     function logout() {
         UserService.logout();
+        toggleLogin();
     }
 
     return <nav>
         <h1 onClick={() => document.location.href = '/'}>Katagen</h1>
-        {UserService.isLoggedIn()
+        {isLoggedIn
             ? <Button label={'Se déconnecter'} handleClick={logout} />
             : <div>
                 <Button label={'S\'inscrire'} handleClick={goToRegisterPage} />

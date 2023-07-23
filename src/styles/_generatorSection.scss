@@ -1,7 +1,7 @@
 #generator {
     border: 2px solid black;
     height: 100%;
-    width: 100%;
-    margin-left: .2rem;
-    border-radius: $border-radius/2 $border-radius*2 $border-radius*2 $border-radius/2;
+    flex-grow: 1;
+    margin-left: .5rem;
+    border-radius: calc($border-radius/2) calc($border-radius*2) calc($border-radius*2) calc($border-radius/2);
 }

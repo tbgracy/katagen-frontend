@@ -1,48 +1,23 @@
-import { Clothing } from "../../types/clothing";
-import Button from "../Button";
+import { useEffect, useMemo, useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import ClothList from "./ClothList";
-import { useEffect, useRef, useState } from "react";
-import NewClothingForm from "../NewClothingForm";
-import ClotheServices from "../../services/clothesService";
 
-const clothes: Array<Clothing> = [
-    {
-        id: 2,
-        image: 'https://placehold.co/600x400/png',
-        type: 'sport',
-        category: 'haut',
-        hot: false,
-        colors: ['blue', 'orange'],
-    },
-    {
-        id: 3,
-        image: 'https://placehold.co/600x400/png',
-        type: 'sport',
-        category: 'haut',
-        hot: true,
-        colors: ['blue', 'teal', 'yellow'],
-    },
-    {
-        id: 4,
-        image: 'https://placehold.co/600x400/png',
-        type: 'sport',
-        category: 'haut',
-        hot: false,
-        colors: ['blue', 'orange'],
-    },
-    {
-        id: 5,
-        image: 'https://placehold.co/600x400/png',
-        type: 'sport',
-        category: 'haut',
-        hot: false,
-        colors: ['blue', 'orange'],
-    }
-];
+import Button from "../Button";
+import ClothList from "./ClothList";
+import NewClothingForm from "../NewClothingForm";
+import { Clothing } from "../../types/clothing";
+import ClotheServices from "../../services/clothesService";
+import { ClotheContext } from "../context";
+import { ClipLoader } from "react-spinners";
 
 export default function ClosetSection() {
     const [dialogBox, setDialogBox] = useState<HTMLDialogElement | undefined>(undefined);
+    const [clothes, setClothes] = useState<Array<Clothing>>([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const contextValue = useMemo(
+        () => ({ clothes, refreshClothingList }),
+        [clothes],
+    );
 
     function toggleNewClothingForm() {
         if (dialogBox != undefined) {
@@ -50,17 +25,30 @@ export default function ClosetSection() {
         }
     }
 
-    // const [clothes, setClothes] = useState<Array<Clothing>>([]);
+    function refreshClothingList() {
+        setIsLoading(true);
+        const response = ClotheServices.getAllClothes();
+        response.then((value) => {
+            setIsLoading(false);
+            setClothes(value);
+        });
+        console.log(clothes);
 
-    // useEffect(() => {
-    //     const result = ClotheServices.getAllClothes();
-    //     result.then((value) => { setClothes(value) });
-    // }, []);
+    }
+
+    useEffect(() => {
+        refreshClothingList();
+    }, []);
 
     return <section id='closet'>
-        <h2>Closet</h2>
-        <ClothList clothes={clothes} />
-        <Button label={<FaPlus />} handleClick={toggleNewClothingForm} />
-        <NewClothingForm setDialogBox={(dia) => setDialogBox(dia)} />
+        <h2>Armoire</h2>
+        <ClotheContext.Provider value={contextValue}>
+            {isLoading
+                ? <div className="loader-container"><ClipLoader /></div>
+                : <ClothList clothes={contextValue.clothes} />
+            }
+            <Button label={<FaPlus />} handleClick={toggleNewClothingForm} />
+            <NewClothingForm setDialogBox={(dia) => setDialogBox(dia)} />
+        </ClotheContext.Provider>
     </section>
 }

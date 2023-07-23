@@ -26,7 +26,7 @@ function GenerationForm({ getOutfit }: { getOutfit: () => void }) {
         <label htmlFor="weather-input">Prendre en compte le temps qu'il fait </label>
         <input type="checkbox" name="weather" id="weather-input" />
         <label htmlFor="type-input">Type de tenue</label>
-        <select name="type" id="type-input">
+        <select defaultValue={'sport'} name="type" id="type-input">
             <option value="sport">Sport</option>
             <option value="plage">Plage</option>
             <option value="casual" selected>Décontracté</option>
@@ -77,7 +77,7 @@ export default function GeneratorSection() {
     }
 
     return <section id="generator">
-        <h2>Generator</h2>
+        <h2>Générateur</h2>
         <Weather />
         {outfit != undefined ? <Result outfit={outfit} /> : <GenerationForm getOutfit={getOutfit} />}
     </section>
